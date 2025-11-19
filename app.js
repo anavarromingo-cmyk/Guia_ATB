@@ -2018,9 +2018,9 @@ function getPdfLink(ref) {
   const match = ref && ref.match(/【(\d+)†/);
   if (match) {
     // No existe un enlace directo a esa posición en el PDF; simplemente abrimos el PDF
-    return '../ATB_HNJS.pdf';
+    return '../https://github.com/anavarromingo-cmyk/Guia_ATB/blob/main/ATB_HNJS.pdf';
   }
-  return '../ATB_HNJS.pdf';
+  return '../https://github.com/anavarromingo-cmyk/Guia_ATB/blob/main/ATB_HNJS.pdf';
 }
 
 /**
