@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guía Antimicrobiana Pediátrica</title>
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header and tabs navigation -->
+    <header class="header">
+      <h1>Guía Antimicrobiana Pediátrica</h1>
+      <p>Hospital Infantil Universitario Niño Jesús</p>
+    </header>
+    <nav class="tabs-nav">
+      <!-- Tabs with icons -->
+      <a href="#regimenes" class="nav-link active" data-target="regimenes">🩺 Regímenes empíricos</a>
+      <a href="#busqueda" class="nav-link" data-target="busqueda">💊 Buscar por antibiótico</a>
+      <a href="#sensibilidad" class="nav-link" data-target="sensibilidad">🔬 Sensibilidad</a>
+      <a href="#recursos" class="nav-link" data-target="recursos">📚 Recursos</a>
+    </nav>
+    <main class="main-container">
+      <div class="info-message">Esta aplicación es <strong>experimental</strong>. Confirme siempre las pautas con la guía antimicrobiana oficial del hospital.</div>
+      <!-- Contenido de las pestañas -->
+      <div id="regimenes" class="tab-section active">
+        <div class="card">
+          <div class="card-header">
+            <h2>Regímenes empíricos</h2>
+          </div>
+          <div class="card-body">
+        <form id="regimen-form" class="form-grid">
+          <div class="form-group">
+            <label for="weight">Peso del paciente (kg)</label>
+            <input
+              type="number"
+              step="0.1"
+              min="1"
+              id="weight"
+              placeholder="Ej. 12.5"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="diagnosis">Diagnóstico de sospecha</label>
+            <input
+              list="diagnosis-list"
+              id="diagnosis"
+              placeholder="Seleccione o escriba..."
+              required
+            />
+            <datalist id="diagnosis-list"></datalist>
+          </div>
+          <div class="form-group button-group">
+            <button type="submit" class="btn btn-primary">Calcular</button>
+          </div>
+        </form>
+        <div id="regimen-result"></div>
+          </div>
+        </div>
+      </div>
+      <div id="busqueda" class="tab-section">
+        <div class="card">
+          <div class="card-header">
+            <h2>Buscar por antibiótico</h2>
+          </div>
+          <div class="card-body">
+        <div class="form-group">
+          <input
+            type="text"
+            id="antibiotic-search"
+            placeholder="Introduzca nombre de antibiótico..."
+          />
+        </div>
+        <div id="antibiotic-list" class="list-container"></div>
+        <div id="antibiotic-details"></div>
+          </div>
+        </div>
+      </div>
+      <div id="sensibilidad" class="tab-section">
+        <div class="card">
+          <div class="card-header">
+            <h2>Búsqueda de sensibilidad</h2>
+          </div>
+          <div class="card-body">
+        <div class="form-group">
+          <input
+            type="text"
+            id="agent-search"
+            placeholder="Introduzca agente o microorganismo..."
+          />
+        </div>
+        <div id="agent-list" class="list-container"></div>
+        <div id="agent-details"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Resources tab moved to the end -->
+      <div id="recursos" class="tab-section">
+        <div class="card">
+          <div class="card-header">
+            <h2>Recursos</h2>
+          </div>
+          <div class="card-body">
+            <p><strong>Guía PDF:</strong> <a href="https://raw.githubusercontent.com/anavarromingo-cmyk/Guia_ATB/main/ATB_HNJS.pdf" target="_blank" rel="noopener noreferrer">Guía Antimicrobiana Empírica 2024 (PDF)</a></p>
+            <h3>Coordinadores</h3>
+            <p class="coordinators" style="font-weight:bold; margin-bottom: 12px;">Marta T. Gª Ascaso, Margarita Cuervas‑Mons Vendrell, José A. Alonso Cadenas</p>
+            <h4>Autores</h4>
+            <p>Beatriz Agúndez Reigosa, Marta Bascuas Arribas, Silvia Buendía Martínez, Belén Hernández Milán, Mª Isabel Iglesias Bouzas, Blanca Molina Angulo, Vanesa Núñez Cerezo, Ana Ramírez Barragán, Francisco J. Sanz Santaeufemia</p>
+            <h4>Revisores</h4>
+            <p>Mercedes de la Torre Espí, Raquel Jiménez García, Monserrat Nieto Moro</p>
+            <div class="info-message" style="margin-top: 20px;">
+              <ul style="margin: 0; padding-left: 20px;">
+                <li>Guía empírica – ajustar según cultivos y evolución clínica</li>
+                <li>Vancomicina, gentamicina, tobramicina y amikacina requieren monitorización</li>
+                <li>Promover paso temprano a vía oral cuando sea posible</li>
+                <li>Primera dosis IV debe administrarse en hospital</li>
+                <li>Verificar siempre las alergias del paciente</li>
+              </ul>
+            </div>
+            <div class="disclaimer-card" style="margin-top: 20px;">
+              <h4 style="margin-top: 0; margin-bottom: 8px;">Disclaimer médico-legal</h4>
+              <p style="margin: 0;">Esta aplicación es una herramienta de apoyo clínico basada en la guía oficial del hospital. Las recomendaciones son orientativas y el médico responsable debe siempre ejercer su criterio clínico, revisar cultivos y ajustar el tratamiento según la evolución del paciente. No sustituye el juicio profesional.</p>
+            </div>
+            <!-- Licencia / Aviso adicional bajo el disclaimer médico-legal -->
+            <div class="license-disclaimer" style="margin-top: 12px; font-size:14px;">
+              <p style="margin:0;">
+                <a href="https://anavarromingo-cmyk.github.io/Guia_ATB/">Guia ATB HNJS</a> © 2025 by <a href="https://www.linkedin.com/in/alvaro-navarro-mingorance">Alvaro Navarro Mingorance</a> is licensed under
+                <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International</a>
+                <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
+                <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
+                <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Aplicación -->
+    <script src="app.js"></script>
+
+    <footer class="footer" style="text-align:center; padding:16px 12px; font-size:14px; color:var(--color-text, #666); background: transparent; margin-top:20px;">
+      <p style="margin:0;">
+        <a href="https://anavarromingo-cmyk.github.io/Guia_ATB/">Guia ATB HNJS</a> © 2025 by <a href="https://www.linkedin.com/in/alvaro-navarro-mingorance">Alvaro Navarro Mingorance</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>
+        <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
+        <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
+        <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
+      </p>
+    </footer>
+  </body>
+</html>

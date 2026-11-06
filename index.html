@@ -1,151 +1,247 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guía Antimicrobiana Pediátrica</title>
-    <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Header and tabs navigation -->
-    <header class="header">
-      <h1>Guía Antimicrobiana Pediátrica</h1>
-      <p>Hospital Infantil Universitario Niño Jesús</p>
-    </header>
-    <nav class="tabs-nav">
-      <!-- Tabs with icons -->
-      <a href="#regimenes" class="nav-link active" data-target="regimenes">🩺 Regímenes empíricos</a>
-      <a href="#busqueda" class="nav-link" data-target="busqueda">💊 Buscar por antibiótico</a>
-      <a href="#sensibilidad" class="nav-link" data-target="sensibilidad">🔬 Sensibilidad</a>
-      <a href="#recursos" class="nav-link" data-target="recursos">📚 Recursos</a>
-    </nav>
-    <main class="main-container">
-      <div class="info-message">Esta aplicación es <strong>experimental</strong>. Confirme siempre las pautas con la guía antimicrobiana oficial del hospital.</div>
-      <!-- Contenido de las pestañas -->
-      <div id="regimenes" class="tab-section active">
-        <div class="card">
-          <div class="card-header">
-            <h2>Regímenes empíricos</h2>
-          </div>
-          <div class="card-body">
-        <form id="regimen-form" class="form-grid">
-          <div class="form-group">
-            <label for="weight">Peso del paciente (kg)</label>
-            <input
-              type="number"
-              step="0.1"
-              min="1"
-              id="weight"
-              placeholder="Ej. 12.5"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="diagnosis">Diagnóstico de sospecha</label>
-            <input
-              list="diagnosis-list"
-              id="diagnosis"
-              placeholder="Seleccione o escriba..."
-              required
-            />
-            <datalist id="diagnosis-list"></datalist>
-          </div>
-          <div class="form-group button-group">
-            <button type="submit" class="btn btn-primary">Calcular</button>
-          </div>
-        </form>
-        <div id="regimen-result"></div>
-          </div>
-        </div>
-      </div>
-      <div id="busqueda" class="tab-section">
-        <div class="card">
-          <div class="card-header">
-            <h2>Buscar por antibiótico</h2>
-          </div>
-          <div class="card-body">
-        <div class="form-group">
-          <input
-            type="text"
-            id="antibiotic-search"
-            placeholder="Introduzca nombre de antibiótico..."
-          />
-        </div>
-        <div id="antibiotic-list" class="list-container"></div>
-        <div id="antibiotic-details"></div>
-          </div>
-        </div>
-      </div>
-      <div id="sensibilidad" class="tab-section">
-        <div class="card">
-          <div class="card-header">
-            <h2>Búsqueda de sensibilidad</h2>
-          </div>
-          <div class="card-body">
-        <div class="form-group">
-          <input
-            type="text"
-            id="agent-search"
-            placeholder="Introduzca agente o microorganismo..."
-          />
-        </div>
-        <div id="agent-list" class="list-container"></div>
-        <div id="agent-details"></div>
-          </div>
-        </div>
-      </div>
-      <!-- Resources tab moved to the end -->
-      <div id="recursos" class="tab-section">
-        <div class="card">
-          <div class="card-header">
-            <h2>Recursos</h2>
-          </div>
-          <div class="card-body">
-            <p><strong>Guía PDF:</strong> <a href="https://raw.githubusercontent.com/anavarromingo-cmyk/Guia_ATB/main/ATB_HNJS.pdf" target="_blank" rel="noopener noreferrer">Guía Antimicrobiana Empírica 2024 (PDF)</a></p>
-            <h3>Coordinadores</h3>
-            <p class="coordinators" style="font-weight:bold; margin-bottom: 12px;">Marta T. Gª Ascaso, Margarita Cuervas‑Mons Vendrell, José A. Alonso Cadenas</p>
-            <h4>Autores</h4>
-            <p>Beatriz Agúndez Reigosa, Marta Bascuas Arribas, Silvia Buendía Martínez, Belén Hernández Milán, Mª Isabel Iglesias Bouzas, Blanca Molina Angulo, Vanesa Núñez Cerezo, Ana Ramírez Barragán, Francisco J. Sanz Santaeufemia</p>
-            <h4>Revisores</h4>
-            <p>Mercedes de la Torre Espí, Raquel Jiménez García, Monserrat Nieto Moro</p>
-            <div class="info-message" style="margin-top: 20px;">
-              <ul style="margin: 0; padding-left: 20px;">
-                <li>Guía empírica – ajustar según cultivos y evolución clínica</li>
-                <li>Vancomicina, gentamicina, tobramicina y amikacina requieren monitorización</li>
-                <li>Promover paso temprano a vía oral cuando sea posible</li>
-                <li>Primera dosis IV debe administrarse en hospital</li>
-                <li>Verificar siempre las alergias del paciente</li>
-              </ul>
-            </div>
-            <div class="disclaimer-card" style="margin-top: 20px;">
-              <h4 style="margin-top: 0; margin-bottom: 8px;">Disclaimer médico-legal</h4>
-              <p style="margin: 0;">Esta aplicación es una herramienta de apoyo clínico basada en la guía oficial del hospital. Las recomendaciones son orientativas y el médico responsable debe siempre ejercer su criterio clínico, revisar cultivos y ajustar el tratamiento según la evolución del paciente. No sustituye el juicio profesional.</p>
-            </div>
-            <!-- Licencia / Aviso adicional bajo el disclaimer médico-legal -->
-            <div class="license-disclaimer" style="margin-top: 12px; font-size:14px;">
-              <p style="margin:0;">
-                <a href="https://anavarromingo-cmyk.github.io/Guia_ATB/">Guia ATB HNJS</a> © 2025 by <a href="https://www.linkedin.com/in/alvaro-navarro-mingorance">Alvaro Navarro Mingorance</a> is licensed under
-                <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International</a>
-                <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
-                <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
-                <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-    <!-- Aplicación -->
-    <script src="app.js"></script>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guía Antimicrobiana Pediátrica · HNJS</title>
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Regímenes antibióticos empíricos con dosis por peso, búsqueda por antibiótico y sensibilidades locales. Hospital Infantil Universitario Niño Jesús.">
+<meta name="author" content="Álvaro Navarro Mingorance">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Guía ATB">
+<meta name="application-name" content="Guía ATB">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="icon" href="./favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="./pedpal.css">
+</head>
+<body>
 
-    <footer class="footer" style="text-align:center; padding:16px 12px; font-size:14px; color:var(--color-text, #666); background: transparent; margin-top:20px;">
-      <p style="margin:0;">
-        <a href="https://anavarromingo-cmyk.github.io/Guia_ATB/">Guia ATB HNJS</a> © 2025 by <a href="https://www.linkedin.com/in/alvaro-navarro-mingorance">Alvaro Navarro Mingorance</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>
-        <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
-        <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
-        <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand nav-link" href="#regimenes" data-target="regimenes" aria-label="Inicio · Guía Antimicrobiana Pediátrica">
+      <h1>Guía <span>ATB</span> Pediátrica</h1>
+      <p>Hospital Infantil Universitario Niño Jesús</p>
+    </a>
+    <nav class="top-tabs" aria-label="Secciones">
+      <ul>
+        <li><button type="button" class="nav-link active" data-target="regimenes" aria-current="page">Regímenes empíricos</button></li>
+        <li><button type="button" class="nav-link" data-target="busqueda">Buscar por antibiótico</button></li>
+        <li><button type="button" class="nav-link" data-target="sensibilidad">Sensibilidad</button></li>
+        <li><button type="button" class="nav-link" data-target="recursos">Recursos</button></li>
+        <li><a class="pdf" href="./ATB_HNJS.pdf" target="_blank" rel="noopener">Guía PDF</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="franja" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+</header>
+
+<div class="wrap">
+  <p class="disclaimer">Esta aplicación es <strong>experimental</strong>. Confirme siempre las pautas con la guía antimicrobiana oficial del hospital.</p>
+</div>
+
+<main class="wrap">
+
+  <section id="regimenes" class="tab-section active">
+    <div class="lede">
+      <h2>Regímenes empíricos</h2>
+      <p>Introduzca el peso y el diagnóstico de sospecha para ver las pautas de la guía con la dosis calculada.</p>
+    </div>
+    <div class="box">
+      <form id="regimen-form" class="form-grid">
+        <div class="form-group">
+          <label for="weight">Peso del paciente (kg)</label>
+          <div class="unit">
+            <input type="number" inputmode="decimal" step="0.1" min="1" id="weight" placeholder="Ej. 12.5" required>
+            <span>kg</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="diagnosis">Diagnóstico de sospecha</label>
+          <input list="diagnosis-list" id="diagnosis" placeholder="Seleccione o escriba..." autocomplete="off" required>
+          <datalist id="diagnosis-list"></datalist>
+        </div>
+        <div class="form-group button-group">
+          <button type="submit" class="btn btn-primary">Calcular</button>
+        </div>
+      </form>
+    </div>
+    <div id="regimen-result" aria-live="polite"></div>
+  </section>
+
+  <section id="busqueda" class="tab-section">
+    <div class="lede">
+      <h2>Buscar por antibiótico</h2>
+      <p>Dosis general e indicaciones específicas de cada antibiótico recogido en la guía.</p>
+    </div>
+    <div class="box">
+      <div class="form-group">
+        <label for="antibiotic-search">Antibiótico</label>
+        <input type="search" id="antibiotic-search" placeholder="Introduzca nombre de antibiótico..." autocomplete="off">
+      </div>
+      <div id="antibiotic-list" class="list-container"></div>
+    </div>
+    <div id="antibiotic-details" aria-live="polite"></div>
+  </section>
+
+  <section id="sensibilidad" class="tab-section">
+    <div class="lede">
+      <h2>Búsqueda de sensibilidad</h2>
+      <p>Porcentaje de sensibilidad local por microorganismo.</p>
+    </div>
+    <div class="box">
+      <div class="form-group">
+        <label for="agent-search">Agente / microorganismo</label>
+        <input type="search" id="agent-search" placeholder="Introduzca agente o microorganismo..." autocomplete="off">
+      </div>
+      <div id="agent-list" class="list-container"></div>
+      <div class="legend" aria-label="Leyenda">
+        <span class="pill ok">≥ 90 %</span>
+        <span class="pill warn">70–89 %</span>
+        <span class="pill crit">&lt; 70 %</span>
+      </div>
+    </div>
+    <div id="agent-details" class="tbl" aria-live="polite"></div>
+  </section>
+
+  <section id="recursos" class="tab-section">
+    <div class="lede">
+      <h2>Recursos</h2>
+    </div>
+    <div class="box credits">
+      <p><strong>Guía PDF:</strong> <a href="https://raw.githubusercontent.com/anavarromingo-cmyk/Guia_ATB/main/ATB_HNJS.pdf" target="_blank" rel="noopener noreferrer">Guía Antimicrobiana Empírica 2024 (PDF)</a></p>
+      <div class="actions">
+        <a class="btn btn-outline" href="./ATB_HNJS.pdf" target="_blank" rel="noopener">Abrir guía PDF</a>
+      </div>
+      <h3>Coordinadores</h3>
+      <p class="coordinators">Marta T. Gª Ascaso, Margarita Cuervas‑Mons Vendrell, José A. Alonso Cadenas</p>
+      <h4>Autores</h4>
+      <p>Beatriz Agúndez Reigosa, Marta Bascuas Arribas, Silvia Buendía Martínez, Belén Hernández Milán, Mª Isabel Iglesias Bouzas, Blanca Molina Angulo, Vanesa Núñez Cerezo, Ana Ramírez Barragán, Francisco J. Sanz Santaeufemia</p>
+      <h4>Revisores</h4>
+      <p>Mercedes de la Torre Espí, Raquel Jiménez García, Monserrat Nieto Moro</p>
+    </div>
+    <div class="info-message">
+      <ul>
+        <li>Guía empírica – ajustar según cultivos y evolución clínica</li>
+        <li>Vancomicina, gentamicina, tobramicina y amikacina requieren monitorización</li>
+        <li>Promover paso temprano a vía oral cuando sea posible</li>
+        <li>Primera dosis IV debe administrarse en hospital</li>
+        <li>Verificar siempre las alergias del paciente</li>
+      </ul>
+    </div>
+    <div class="disclaimer-card">
+      <h4>Disclaimer médico-legal</h4>
+      <p>Esta aplicación es una herramienta de apoyo clínico basada en la guía oficial del hospital. Las recomendaciones son orientativas y el médico responsable debe siempre ejercer su criterio clínico, revisar cultivos y ajustar el tratamiento según la evolución del paciente. No sustituye el juicio profesional.</p>
+    </div>
+    <div class="license-disclaimer">
+      <p>
+        <a href="https://anavarromingo-cmyk.github.io/Guia_ATB/">Guia ATB HNJS</a> © 2025 by <a href="https://www.linkedin.com/in/alvaro-navarro-mingorance">Alvaro Navarro Mingorance</a> is licensed under
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International</a>
+        <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="">
+        <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="">
+        <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="">
       </p>
-    </footer>
-  </body>
+      <p style="margin-top:6px">La licencia CC BY-NC 4.0 cubre el código y los textos propios de la app. El contenido clínico procede de la Guía Antimicrobiana Empírica 2024 del Hospital Infantil Universitario Niño Jesús, cuyos derechos pertenecen a sus autores.</p>
+    </div>
+  </section>
+
+</main>
+
+<div class="franja fina" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Álvaro Navarro · <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+    <span>Basada en la Guía Antimicrobiana Empírica 2024 · HIU Niño Jesús</span>
+  </div>
+</footer>
+
+<div class="bottom-pad" aria-hidden="true"></div>
+
+<nav class="bottom-nav" aria-label="Secciones">
+  <ul>
+    <li><button type="button" class="nav-link active" data-target="regimenes" aria-current="page">
+      <span class="pill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.8 2.3 A.3.3 0 1 0 5 2 M8 15 A6 6 0 0 0 20 15 V8.5 a3.5 3.5 0 0 0 -7 0 V15 M11 3 L8 3 a2 2 0 0 0 -2 2 v3 a2 2 0 0 0 2 2 h3"/><circle cx="20" cy="10" r="2"/></svg></span>
+      Regímenes
+    </button></li>
+    <li><button type="button" class="nav-link" data-target="busqueda">
+      <span class="pill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 20.5 L20.5 10.5 a4.95 4.95 0 0 0 -7 -7 L3.5 13.5 a4.95 4.95 0 0 0 7 7Z"/><line x1="8.12" y1="8.12" x2="15.88" y2="15.88"/></svg></span>
+      Antibióticos
+    </button></li>
+    <li><button type="button" class="nav-link" data-target="sensibilidad">
+      <span class="pill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></svg></span>
+      Sensibilidad
+    </button></li>
+    <li><button type="button" class="nav-link" data-target="recursos">
+      <span class="pill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3 h6 a4 4 0 0 1 4 4 v14 a3 3 0 0 0 -3 -3 H2Z"/><path d="M22 3 h-6 a4 4 0 0 0 -4 4 v14 a3 3 0 0 1 3 -3 h7Z"/></svg></span>
+      Recursos
+    </button></li>
+    <li><a href="./ATB_HNJS.pdf" target="_blank" rel="noopener">
+      <span class="pill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2 H6 a2 2 0 0 0 -2 2 v16 a2 2 0 0 0 2 2 h12 a2 2 0 0 0 2 -2 V8 Z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg></span>
+      Guía PDF
+    </a></li>
+  </ul>
+</nav>
+
+<script src="app.js"></script>
+<script>
+/* Puente PEDPAL: sincroniza nav superior/inferior con el router de app.js (sin modificarlo). */
+(function(){
+"use strict";
+const SECTIONS=["regimenes","busqueda","sensibilidad","recursos"];
+const links=()=>document.querySelectorAll(".nav-link[data-target]");
+
+function sync(){
+  const cur=document.querySelector(".tab-section.active");
+  const id=cur?cur.id:SECTIONS[0];
+  links().forEach(l=>{
+    const on=l.dataset.target===id;
+    l.classList.toggle("active",on);
+    if(on) l.setAttribute("aria-current","page"); else l.removeAttribute("aria-current");
+  });
+  try{ history.replaceState(null,"","#"+id); }catch(e){}
+}
+
+function labelTable(table){
+  const heads=Array.from(table.querySelectorAll("thead th")).map(th=>th.textContent.trim());
+  table.querySelectorAll("tbody tr").forEach(tr=>{
+    Array.from(tr.children).forEach((td,i)=>{ if(heads[i]) td.dataset.label=heads[i]; });
+  });
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  const obs=new MutationObserver(sync);
+  document.querySelectorAll(".tab-section").forEach(s=>obs.observe(s,{attributes:true,attributeFilter:["class"]}));
+
+  document.addEventListener("click",e=>{
+    if(e.target.closest(".nav-link[data-target]")) window.scrollTo({top:0});
+    const chip=e.target.closest(".list-container button");
+    if(chip){
+      chip.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed", b===chip?"true":"false"));
+      const det=document.getElementById(chip.parentElement.id==="agent-list"?"agent-details":"antibiotic-details");
+      if(det && window.matchMedia("(max-width: 1023px)").matches) setTimeout(()=>det.scrollIntoView({behavior:"smooth",block:"start"}),0);
+    }
+  });
+
+  const res=document.getElementById("regimen-result");
+  new MutationObserver(()=>{
+    const t=res.querySelector("table"); if(!t) return;
+    labelTable(t);
+    if(window.matchMedia("(max-width: 1023px)").matches) res.scrollIntoView({behavior:"smooth",block:"start"});
+  }).observe(res,{childList:true});
+
+  const start=(location.hash||"").slice(1);
+  const link=SECTIONS.includes(start) && document.querySelector('.nav-link[data-target="'+start+'"]');
+  if(link) link.click(); else sync();
+});
+
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+})();
+</script>
+</body>
 </html>
